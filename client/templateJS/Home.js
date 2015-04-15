@@ -10,4 +10,5 @@ Template.home.helpers({
     }
 });
 
-Meteor.call("insert", "hello world");
+//Meteor.call("", "http://www.facebook.com");
+//Meteor.call("updateUrl", "VyTCxaI-", "Canada", "www.facebook.com");

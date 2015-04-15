@@ -1,5 +1,14 @@
 <template name="home">
     {{#each test}}
-        {{text}}
+        <p>----------------</p>
+        <p>{{urlKey}}</p>
+        <p>{{urlRedirect}}</p>
+        <p>{{hitCounter}}</p>
+        {{#each country}}
+            <p>{{this}}</p>
+        {{/each}}
+        {{#each website}}
+            <p>{{this}}</p>
+        {{/each}}
     {{/each}}
 </template>
