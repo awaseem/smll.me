@@ -11,11 +11,12 @@ Template.weekChart.helpers({
 });
 
 Template.weekChart.onRendered(function () {
+    var urlKey = Session.get("urlKey");
     var chartRendered = false;
 
     var currentYear = moment().year();
     var currentMonth = moment().format("MMMM");
-    var urlDates = Urls.findOne( {urlKey: "Vyw1ZiGz"}).dates;
+    var urlDates = Urls.findOne( {urlKey: urlKey}).dates;
 
     for (day in urlDates[currentYear][currentMonth]) {
         if (day === "count") { continue; }
@@ -29,7 +30,7 @@ Template.weekChart.onRendered(function () {
 
     this.autorun(function () {
         if (chartRendered) {
-            urlDates = Urls.findOne( { urlKey: "Vyw1ZiGz"}).dates;
+            urlDates = Urls.findOne( { urlKey: urlKey}).dates;
             upsertBarGraph(chartLabel, urlDates[currentYear][currentMonth], chart);
         }
     });

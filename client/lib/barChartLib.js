@@ -1,6 +1,7 @@
 /**
  * Created by awaseem on 15-04-24.
  */
+
 generateBarGraph = function (chartLabels, chartData, chartId, callback) {
     // generate a bar graph based on the labels and data
     // returns an instance of a chart object

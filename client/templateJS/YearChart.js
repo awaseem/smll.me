@@ -11,16 +11,16 @@ Template.yearChart.helpers({
 });
 
 Template.yearChart.onRendered(function () {
+    var urlKey = Session.get("urlKey");
     var chartRendered = false;
 
     var currentYear = moment().year();
-    var urlDates = Urls.findOne( {urlKey: "Vyw1ZiGz"} ).dates;
+    var urlDates = Urls.findOne( {urlKey: urlKey} ).dates;
 
     for (month in urlDates[currentYear]) {
         if (month === "count") { continue; }
         chartLabel.push(month);
         chartData.push(urlDates[currentYear][month].count);
-        console.log(chartData);
     }
 
     chart = generateBarGraph(chartLabel, chartData, "myChart", function () {
@@ -29,7 +29,7 @@ Template.yearChart.onRendered(function () {
 
     this.autorun(function () {
         if (chartRendered) {
-            urlDates = Urls.findOne( {urlKey: "Vyw1ZiGz"}).dates;
+            urlDates = Urls.findOne( {urlKey: urlKey}).dates;
             upsertBarGraph(chartLabel, urlDates[currentYear], chart);
         }
     });
