@@ -2,11 +2,11 @@
  * Created by awaseem on 15-04-24.
  */
 
-generateBarGraph = function (chartLabels, chartData, chartId, callback) {
+generateBarGraph = function (chartLabel, chartData, chartId, callback) {
     // generate a bar graph based on the labels and data
     // returns an instance of a chart object
     var data = {
-        labels: chartLabels,
+        labels: chartLabel,
         datasets: [{
             label: "My First dataset",
             fillColor: "rgba(220,220,220,0.5)",
@@ -28,7 +28,7 @@ generateBarGraph = function (chartLabels, chartData, chartId, callback) {
 upsertBarGraph = function (chartLabel, urlDateObj, chartObj) {
     // update or insert new data into the bar graph
     // re-render the chart after the update is complete
-    for (value in urlDateObj) {
+    for (var value in urlDateObj) {
         if (value === "count") { continue; }
         var index = chartLabel.indexOf(value);
         if (index > -1) {
