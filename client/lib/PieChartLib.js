@@ -4,7 +4,9 @@
 
 var chartOptions = {
     segmentShowStroke : false,
-    legendTemplate: "<ul class=\"pie-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%>: <%=segments[i].value%><%}%></li><%}%></ul>"
+    responsive: true,
+    percentageInnerCutout: 55,
+    legendTemplate: "<ul class=\"pie-legend\"><% for (var i=0; i<segments.length; i++){%><%if(segments[i].label && segments[i].value && segments[i].value != 0){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%=segments[i].label%>: <%=segments[i].value%><%}%></li><%}%></ul>"
 };
 
 generatePieGraph = function (chartLabel, chartData, chartId, callback) {
@@ -18,6 +20,7 @@ generatePieGraph = function (chartLabel, chartData, chartId, callback) {
             color: randomColor({
                 luminosity: 'light'
             }),
+            highlight:"rgba(220,220,220,0.75)",
             label: chartLabel[index]
         });
     }
@@ -46,6 +49,7 @@ upsertPieGraph = function (chartLabel, urlObj, chartObj) {
                 color: randomColor({
                     luminosity: 'light'
                 }),
+                highlight: "rgba(220,220,220,0.75)",
                 label: urlData
             });
         }
@@ -66,6 +70,7 @@ upsertRefererPieGraph = function (chartLabel, urlObj, chartObj) {
                 color: randomColor({
                     luminosity: 'light'
                 }),
+                highlight: "rgba(220,220,220,0.75)",
                 label: urlData.replace(/:/g, ".")
             });
         }

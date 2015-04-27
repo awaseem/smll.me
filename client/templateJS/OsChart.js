@@ -33,5 +33,6 @@ Template.osChart.onRendered(function () {
         } else {
             upsertPieGraph(chartLabel, osValues, chart);
         }
+        $("#os_legend").html(chart.generateLegend());
     });
 });

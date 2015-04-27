@@ -1,23 +1,29 @@
 /**
  * Created by awaseem on 15-04-24.
  */
+var chartOptions = {
+    responsive: true
+};
 
 generateBarGraph = function (chartLabel, chartData, chartId, callback) {
     // generate a bar graph based on the labels and data
     // returns an instance of a chart object
+
+    var color = randomColor({ luminosity: 'light'});
+
     var data = {
         labels: chartLabel,
         datasets: [{
             label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.5)",
-            strokeColor: "rgba(220,220,220,0.8)",
+            fillColor: color,
+            strokeColor: color,
             highlightFill: "rgba(220,220,220,0.75)",
             highlightStroke: "rgba(220,220,220,1)",
             data: chartData
         }]
     };
     var ctx = $("#" + chartId).get(0).getContext("2d");
-    var chart = new Chart(ctx).Bar(data);
+    var chart = new Chart(ctx).Bar(data, chartOptions);
     // callback function to call right after the chart has rendered
     if (typeof callback === "function") {
         callback();

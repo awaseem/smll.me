@@ -1,7 +1,25 @@
 <template name="results">
-    {{> yearChart}}
-    {{> weekChart}}
-    {{> browserChart}}
-    {{> osChart}}
-    {{> refererChart}}
+    <div class="container" style="max-width: 800px; max-height: 500px;">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                {{> yearChart}}
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-6" style="max-width: 800px; max-height: 800px">
+                {{> osChart}}
+            </div>
+            <div class="col-sm-6 col-md-6">
+                {{> refererChart}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+                {{> browserChart}}
+            </div>
+        </div>
+    </div>
 </template>

@@ -34,5 +34,6 @@ Template.refererChart.onRendered(function () {
         } else {
             upsertRefererPieGraph(chartLabel, referers, chart);
         }
+        $("#ref_legend").html(chart.generateLegend());
     });
 });

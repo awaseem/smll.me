@@ -1,5 +1,6 @@
 .pie-legend {
 	list-style: none;
+    display: inline-block;
 	margin: 0;
 	padding: 0;
 }
@@ -13,4 +14,13 @@
 }
 .pie-legend li {
 	margin-bottom: 10px;
+}
+
+canvas {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+ul {
+    display: inline-block;
 }

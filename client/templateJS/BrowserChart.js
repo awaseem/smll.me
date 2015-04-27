@@ -31,7 +31,7 @@ Template.browserChart.onRendered(function () {
         } else {
             upsertPieGraph(chartLabel, browsers, chart);
         }
-        $("#pie_legend").html(chart.generateLegend());
+        $("#browser_legend").html(chart.generateLegend());
     });
 
 });
