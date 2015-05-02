@@ -1,13 +1,8 @@
 <template name="results">
     <div class="container" style="max-width: 800px; max-height: 500px;">
         <div class="row">
-            <div>
-                <h1 class="pull-left">Month: April</h1>
-                <button class="btn btn-group btn-warning pull-right change-time" style="z-index: 10000">{{buttonAction}}</button>
-            </div>
             <div class="col-sm-12 col-md-12">
-                <div class="yearChart">{{>yearChart}}</div>
-                <div class="weekChart">{{> weekChart}}</div>
+                <div class="yearChart">{{> dateChart}}</div>
             </div>
         </div>
     </div>
