@@ -1,0 +1,41 @@
+<template name="urlForm">
+    <h1 class="text-center">Smll.me</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <form class="urlEntry">
+                    <div class="input-group">
+                        <input class="form-control" name="url" type="url" placeholder="Enter URL here" required>
+                    <span class="input-group-btn">
+                        <button class="btn btn-danger" type="submit">Smll Me!</button>
+                    </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container text-center">
+        {{# if formResults}}
+            <h3 class="text-center">Here is your new Smll link: </h3>
+            <a href="http://localhost:3000/{{formResults}}">http://localhost:3000/{{formResults}}</a>
+        {{/if}}
+    </div>
+    {{# if localUrlKeys}}
+        <div class="container">
+            <h1 class="text-center">Your Previous Smll Links</h1>
+            <div class="row">
+                {{# each localUrlKeys}}
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h5><a href="http://localhost:3000/{{urlKey}}">{{urlKey}}</a></h5>
+                                <p class="text-muted">{{urlValue}}</p>
+                                <a id="test" class="button btn btn-success" href="http://localhost:3000/{{urlKey}}/results">Results</a>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    {{/if}}
+</template>

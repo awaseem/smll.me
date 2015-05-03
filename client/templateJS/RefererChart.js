@@ -5,6 +5,8 @@
  * Created by awaseem on 15-04-25.
  */
 
+var chart;
+
 Template.refererChart.helpers({
     // put any helpers here
 });
@@ -12,7 +14,6 @@ Template.refererChart.helpers({
 Template.refererChart.onRendered(function () {
     var chartLabel = [];
     var chartData = [];
-    var chart;
     var chartRendered = false;
 
     this.autorun(function () {
@@ -24,6 +25,7 @@ Template.refererChart.onRendered(function () {
         }
 
         if (!chartRendered) {
+            if (chart) { chart.destroy() }
             for (var referer in referers) {
                 chartLabel.push(referer.replace(/:/g, "."));
                 chartData.push(referers[referer]);
@@ -31,7 +33,8 @@ Template.refererChart.onRendered(function () {
             chart = generatePieGraph(chartLabel, chartData, "refChart", function () {
                 chartRendered = true;
             });
-        } else {
+        }
+        else {
             upsertRefererPieGraph(chartLabel, referers, chart);
         }
         $("#ref_legend").html(chart.generateLegend());

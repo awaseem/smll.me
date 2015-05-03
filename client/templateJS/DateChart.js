@@ -2,12 +2,7 @@
  * Created by ali on 4/13/15.
  */
 
-var chartLabel = [];
-var chartData = [];
 var chart;
-var currentYear = moment().year();
-var currentMonth = moment().format("MMMM");
-var chartRendered = false;
 
 Template.dateChart.helpers({
     chartTitle: function () {
@@ -25,6 +20,11 @@ Template.dateChart.helpers({
 });
 
 Template.dateChart.onRendered(function () {
+    var chartLabel = [];
+    var chartData = [];
+    var currentYear = moment().year();
+    var currentMonth = moment().format("MMMM");
+    var chartRendered = false;
     Session.set("toggleMonth", false);
 
     this.autorun(function () {
@@ -37,15 +37,7 @@ Template.dateChart.onRendered(function () {
             return;
         }
 
-        if (chartRendered) {
-            if (toggleMonth) {
-                upsertBarGraph(chartLabel, urlDates[currentYear][currentMonth], chart);
-            }
-            else {
-                upsertBarGraph(chartLabel, urlDates[currentYear], chart);
-            }
-        }
-        else {
+        if (!chartRendered) {
             chartData = [];
             chartLabel = [];
             if (chart) { chart.destroy(); }
@@ -66,13 +58,21 @@ Template.dateChart.onRendered(function () {
                 chartRendered = true;
             });
         }
+        else {
+            if (toggleMonth) {
+                upsertBarGraph(chartLabel, urlDates[currentYear][currentMonth], chart);
+            }
+            else {
+                upsertBarGraph(chartLabel, urlDates[currentYear], chart);
+            }
+        }
     });
 });
 
 Template.dateChart.events({
     "click #change-chart": function () {
         var toggle = !Session.get("toggleMonth");
-        chartRendered = false;
         Session.set("toggleMonth", toggle);
+        chartRendered = false;
     }
 });

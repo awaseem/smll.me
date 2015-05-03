@@ -1,15 +1,15 @@
 <template name="results">
-    <div class="container" style="max-width: 800px; max-height: 500px;">
+    <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-12">
-                <div class="yearChart">{{> dateChart}}</div>
+            <div class="col-sm-12 col-md-8 col-md-offset-2">
+                {{> dateChart}}
             </div>
         </div>
     </div>
     <br>
     <div class="container">
         <div class="row">
-            <div class="col-sm-6 col-md-4" style="max-width: 800px; max-height: 800px">
+            <div class="col-sm-6 col-md-4">
                 {{> osChart}}
             </div>
             <div class="col-sm-6 col-md-4">
