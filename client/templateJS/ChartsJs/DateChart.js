@@ -3,6 +3,9 @@
  */
 
 var chart;
+var currentYear = moment().year();
+var currentMonth = moment().format("MMMM");
+var chartRendered = false;
 
 Template.dateChart.helpers({
     chartTitle: function () {
@@ -22,9 +25,7 @@ Template.dateChart.helpers({
 Template.dateChart.onRendered(function () {
     var chartLabel = [];
     var chartData = [];
-    var currentYear = moment().year();
-    var currentMonth = moment().format("MMMM");
-    var chartRendered = false;
+    chartRendered = false;
     Session.set("toggleMonth", false);
 
     this.autorun(function () {
