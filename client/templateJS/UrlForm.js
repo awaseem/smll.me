@@ -22,7 +22,10 @@ Template.urlForm.events({
 
         Meteor.call("insertUrl", url, function(error, results) {
             var localUrlKeys = Session.get("localUrlKeys");
-            localUrlKeys.push({
+            if (url.length >= 25) {
+                url = url.substring(0, 22) + "...";
+            }
+            localUrlKeys.unshift({
                 urlKey: results,
                 urlValue: url
             });
@@ -33,9 +36,5 @@ Template.urlForm.events({
         event.target.url.value = "";
 
         return false;
-    },
-
-    "click .test": function (event) {
-        window.dispatchEvent(new Event('resize'));
     }
 });

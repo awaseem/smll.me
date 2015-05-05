@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-8 col-md-offset-2">
-                {{> dateChart}}
+                {{> yield "dateChart"}}
             </div>
         </div>
     </div>
@@ -10,13 +10,13 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-4">
-                {{> osChart}}
+                {{> yield "osChart"}}
             </div>
             <div class="col-sm-6 col-md-4">
-                {{> refererChart}}
+                {{> yield "refererChart"}}
             </div>
             <div class="col-sm-6 col-md-4">
-                {{> browserChart}}
+                {{> yield "browserChart"}}
             </div>
         </div>
     </div>

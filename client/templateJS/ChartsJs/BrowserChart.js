@@ -2,8 +2,6 @@
  * Created by awaseem on 15-04-25.
  */
 
-var chartLabel = [];
-var chartData = [];
 var chart;
 
 Template.browserChart.helpers({
@@ -14,7 +12,6 @@ Template.browserChart.onRendered(function () {
     var chartLabel = [];
     var chartData = [];
     var chartRendered = false;
-
     this.autorun(function () {
         var urlKey = Session.get("urlKey");
         var browsers = Urls.findOne({ urlKey: urlKey }).browsers;

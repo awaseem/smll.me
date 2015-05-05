@@ -17,7 +17,7 @@
     <div class="container text-center">
         {{# if formResults}}
             <h3 class="text-center">Here is your new Smll link: </h3>
-            <a href="http://localhost:3000/{{formResults}}">http://localhost:3000/{{formResults}}</a>
+            <a href="/{{formResults}}">http://localhost:3000/{{formResults}}</a>
         {{/if}}
     </div>
     {{# if localUrlKeys}}
@@ -30,7 +30,7 @@
                             <div class="panel-body">
                                 <h5><a href="http://localhost:3000/{{urlKey}}">{{urlKey}}</a></h5>
                                 <p class="text-muted">{{urlValue}}</p>
-                                <a id="test" class="button btn btn-success" href="http://localhost:3000/{{urlKey}}/results">Results</a>
+                                <a id="test" class="button btn btn-success" href="/{{urlKey}}/results">Results</a>
                             </div>
                         </div>
                     </div>

@@ -27,7 +27,6 @@ Template.dateChart.onRendered(function () {
     var chartData = [];
     chartRendered = false;
     Session.set("toggleMonth", false);
-
     this.autorun(function () {
         var toggleMonth = Session.get("toggleMonth");
         var urlKey = Session.get("urlKey");
