@@ -40,3 +40,7 @@ Template.refererChart.onRendered(function () {
         $("#ref_legend").html(chart.generateLegend());
     });
 });
+
+Template.refererChart.onDestroyed(function () {
+    if (chart) { chart.destroy() }
+});

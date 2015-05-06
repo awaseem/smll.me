@@ -1,13 +1,13 @@
 <template name="urlForm">
-    <h1 class="text-center">Smll.me</h1>
+    <h1 class="text-center smll-title-text">Smll.me</h1>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-sm-8 col-md-6 col-md-offset-3 col-sm-offset-2">
                 <form class="urlEntry">
                     <div class="input-group">
                         <input class="form-control" name="url" type="url" placeholder="Enter URL here" required>
                     <span class="input-group-btn">
-                        <button class="btn btn-danger" type="submit">Smll Me!</button>
+                        <button class="btn btn-warning" type="submit">Smll Me!</button>
                     </span>
                     </div>
                 </form>
@@ -15,27 +15,38 @@
         </div>
     </div>
     <div class="container text-center">
-        {{# if formResults}}
-            <h3 class="text-center">Here is your new Smll link: </h3>
-            <a href="/{{formResults}}">http://localhost:3000/{{formResults}}</a>
-        {{/if}}
+        {{#momentum plugin='growl'}}
+            {{#if formResults}}
+                <h3 class="text-center">Here is your new Smll link:</h3>
+                <a class="new-smll-link" href="/{{formResults}}">http://localhost:3000/{{formResults}}</a>
+                <div class="link-buttons">
+                    <a class="button btn btn-success" href="/{{formResults}}/results">Results</a>
+                    <button id="hide-link-button" class="btn btn-danger">Hide</button>
+                </div>
+            {{/if}}
+        {{/momentum}}
     </div>
-    {{# if localUrlKeys}}
-        <div class="container">
-            <h1 class="text-center">Your Previous Smll Links</h1>
-            <div class="row">
-                {{# each localUrlKeys}}
-                    <div class="col-md-4">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <h5><a href="http://localhost:3000/{{urlKey}}">{{urlKey}}</a></h5>
-                                <p class="text-muted">{{urlValue}}</p>
-                                <a id="test" class="button btn btn-success" href="/{{urlKey}}/results">Results</a>
+    {{#momentum plugin='fade'}}
+        {{# if localUrlKeys}}
+            <div class="container">
+                <h1 class="text-center previous-title">Your Previous Smll Links</h1>
+                <div class="row">
+                    {{#momentum plugin='growl'}}
+                        {{# each localUrlKeys}}
+                            <div id="{{urlKey}}" class="col-sm-6 col-md-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <h5><a href="http://localhost:3000/{{urlKey}}">{{urlKey}}</a></h5>
+                                        <p class="text-muted">{{urlValue}}</p>
+                                        <a class="button btn btn-success" href="/{{urlKey}}/results">Results</a>
+                                        <button type="button" class="btn btn-danger delete-button">Delete</button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                {{/each}}
+                        {{/each}}
+                    {{/momentum}}
+                </div>
             </div>
-        </div>
-    {{/if}}
+        {{/if}}
+    {{/momentum}}
 </template>

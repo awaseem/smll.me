@@ -35,5 +35,8 @@ Template.browserChart.onRendered(function () {
         }
         $("#browser_legend").html(chart.generateLegend());
     });
+});
 
+Template.browserChart.onDestroyed(function () {
+    if (chart) { chart.destroy() }
 });

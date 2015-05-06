@@ -24,3 +24,18 @@ canvas {
 ul {
     display: inline-block;
 }
+
+.link-buttons {
+    margin-top: 10px;
+}
+
+.previous-title {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.smll-title-text {
+    margin-top: 50px;
+    font-size: 600%;
+    margin-bottom: 50px;
+}

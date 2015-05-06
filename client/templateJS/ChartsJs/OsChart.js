@@ -38,3 +38,7 @@ Template.osChart.onRendered(function () {
         $("#os_legend").html(chart.generateLegend());
     });
 });
+
+Template.osChart.onDestroyed(function () {
+    if (chart) { chart.destroy() }
+});
