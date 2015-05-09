@@ -1,5 +1,15 @@
 <template name="results">
     <div class="container">
+        <div id="result-title" class="text-center">
+            <h1 id="heading" class="text-center animated infinite tada">Results For:</h1>
+            <h3 class="text-center"><a href="/{{urlResults.urlKey}}">smll.me/{{urlResults.urlKey}}</a></h3>
+        </div>
+        <div id="total-hits" class="text-center">
+            <h1 class="text-center">Total Hits:</h1>
+            <h1 class="text-center">{{urlResults.totalHits}}</h1>
+        </div>
+    </div>
+    <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-8 col-md-offset-2">
                 {{> yield "dateChart"}}
@@ -18,6 +28,12 @@
             <div class="col-sm-6 col-md-4">
                 {{> yield "browserChart"}}
             </div>
+        </div>
+    </div>
+    <div class="container">
+        <div id="link-information" class="text-center text-muted">
+            <h5>Date created: {{formatTime urlResults.dateCreated}}</h5>
+            <h5>Link: <a href="{{urlResults.urlRedirect}}">{{urlResults.urlRedirect}}</a></h5>
         </div>
     </div>
 </template>

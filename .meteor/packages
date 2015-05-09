@@ -13,7 +13,7 @@ hitchcott:platform
 momentjs:moment
 mrt:url
 rzymek:randomcolor
-u2622:persistent-session
 percolate:momentum
 natestrauser:animate-css
 grokbot:bootstrap-flatly
+u2622:persistent-session@=0.3.3

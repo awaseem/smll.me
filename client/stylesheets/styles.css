@@ -39,3 +39,20 @@ ul {
     font-size: 600%;
     margin-bottom: 50px;
 }
+
+#result-title {
+    margin-bottom: 40px;
+}
+
+#result-title #heading {
+    font-size: 400%;
+}
+
+#total-hits {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+#link-information {
+    margin-top: 40px;
+}

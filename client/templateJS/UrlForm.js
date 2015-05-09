@@ -39,15 +39,18 @@ Template.urlForm.events({
     },
 
     "click .delete-button": function () {
-        var self = this;
         var localUrlKeys = Session.get("localUrlKeys");
         for (var i = 0; i < localUrlKeys.length; i++) {
-            if (self.urlKey == localUrlKeys[i].urlKey) {
+            if (this.urlKey == localUrlKeys[i].urlKey) {
                 localUrlKeys.splice(i, 1);
             }
         }
         Session.setPersistent("localUrlKeys", localUrlKeys);
-        Meteor.call("deleteUrl", self.urlKey);
+        // if the user is deleting a url that is being displayed, then hide the results
+        if (Session.get("formResults") === this.urlKey) {
+            Session.set("formResults", undefined);
+        }
+        Meteor.call("deleteUrl", this.urlKey);
     },
 
     "click #hide-link-button": function () {
@@ -56,7 +59,7 @@ Template.urlForm.events({
 });
 
 Template.urlForm.onRendered(function () {
-    $('.smll-title-text').each(function(){
+    $('.smll-title-text').each(function() {
         var animations = ["bounce", "rubberBand", "swing", "tada", "pulse", "flash"];
         var letters = $(this).text().split('');
         $(this).text('');
