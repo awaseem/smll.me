@@ -12,15 +12,37 @@ Template.urlForm.helpers({
     },
     localUrlKeys: function () {
         return Session.get("localUrlKeys");
+    },
+    captchaEmpty: function () {
+        return Session.get("captchaEmpty");
+    },
+    loadingNewLink: function () {
+        return Session.get("loadingNewLink")
     }
 });
 
 Template.urlForm.events({
     "submit .urlEntry": function (event) {
-
         var url = event.target.url.value;
+        var captcha = grecaptcha.getResponse();
 
-        Meteor.call("insertUrl", url, function(error, results) {
+        // As soon as the user hits the submit button, reset the form results and trigger a loading spinner
+        Session.set("formResults", undefined);
+        Session.set("loadingNewLink", true);
+
+        Meteor.call("insertUrl", url, captcha, function(error, results) {
+            // Check to see if the captcha was successful, if not let the user know and don't create a new link
+            if (results === false ) {
+                Session.set("captchaEmpty", true);
+                Session.set("loadingNewLink", false);
+                return
+            }
+            else {
+                Session.set("captchaEmpty", false);
+                event.target.url.value = "";
+                grecaptcha.reset();
+            }
+            // Add the new link to the users local storage
             var localUrlKeys = Session.get("localUrlKeys");
             if (url.length >= 25) {
                 url = url.substring(0, 22) + "...";
@@ -29,11 +51,11 @@ Template.urlForm.events({
                 urlKey: results,
                 urlValue: url
             });
+            // Disable the loading screen and show the user the results
             Session.setPersistent("localUrlKeys", localUrlKeys);
+            Session.set("loadingNewLink", false);
             Session.set("formResults", results);
         });
-
-        event.target.url.value = "";
 
         return false;
     },

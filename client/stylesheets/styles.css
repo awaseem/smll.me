@@ -1,19 +1,19 @@
 .pie-legend {
-	list-style: none;
+    list-style: none;
     display: inline-block;
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 .pie-legend span {
-	display: inline-block;
-	width: 14px;
-	height: 14px;
-	border-radius: 100%;
-	margin-right: 16px;
-	margin-bottom: -2px;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 100%;
+    margin-right: 16px;
+    margin-bottom: -2px;
 }
 .pie-legend li {
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 canvas {
@@ -55,4 +55,28 @@ ul {
 
 #link-information {
     margin-top: 40px;
+}
+
+#capatcha {
+    margin: 0 auto;
+    display: block;
+    width: 60%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+@media(max-width: 500px) {
+    #capatcha {
+        width: 90%;
+    }
+}
+
+.sk-spinner-rotating-plane.sk-spinner {
+    background-color: deeppink;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

@@ -4,8 +4,13 @@
 
 Meteor.methods({
 
-    insertUrl: function (url) {
+    insertUrl: function (url, captcha) {
         var urlKey = ShortId.generate();
+        var verifyCaptchaResponse = reCAPTCHA.verifyCaptcha(this.connection.clientAddress, captcha);
+
+        if (!verifyCaptchaResponse.data.success) {
+            return false
+        }
 
         Urls.insert({
             urlKey: urlKey,

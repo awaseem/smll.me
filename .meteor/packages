@@ -17,3 +17,5 @@ percolate:momentum
 natestrauser:animate-css
 grokbot:bootstrap-flatly
 u2622:persistent-session@=0.3.3
+appshore:recaptcha
+pcel:loading
