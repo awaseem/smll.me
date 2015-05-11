@@ -4,6 +4,7 @@
 
 Template.urlForm.onCreated(function () {
     Session.setDefaultPersistent("localUrlKeys", []);
+    Session.setDefaultPersistent("firstTimeVisitor", true);
 });
 
 Template.urlForm.helpers({
@@ -18,6 +19,9 @@ Template.urlForm.helpers({
     },
     loadingNewLink: function () {
         return Session.get("loadingNewLink")
+    },
+    firstTimeVistor: function () {
+        return Session.get("firstTimeVisitor")
     }
 });
 
@@ -77,6 +81,10 @@ Template.urlForm.events({
 
     "click #hide-link-button": function () {
         Session.set("formResults", undefined);
+    },
+
+    "click #first-time-alert": function () {
+        Session.set("firstTimeVisitor", false);
     }
 });
 

@@ -1,4 +1,10 @@
 <template name="urlForm">
+    {{#if firstTimeVisitor}}
+        <div class="alert alert-dismissible alert-danger" style="border-radius: 0px">
+            <button id="first-time-alert" type="button" class="close" data-dismiss="alert">×</button>
+            <p>Welcome to Smll.me! (beta) Paste a Url below, share it and then see the results update in real time!</p>
+        </div>
+    {{/if}}
     <div class="container">
         <h1 class="text-center smll-title-text">Smll.me</h1>
         <form class="urlEntry">
