@@ -20,7 +20,7 @@ Template.urlForm.helpers({
     loadingNewLink: function () {
         return Session.get("loadingNewLink")
     },
-    firstTimeVistor: function () {
+    firstTimeVisitor: function () {
         return Session.get("firstTimeVisitor")
     }
 });
@@ -84,7 +84,7 @@ Template.urlForm.events({
     },
 
     "click #first-time-alert": function () {
-        Session.set("firstTimeVisitor", false);
+        Session.setPersistent("firstTimeVisitor", false);
     }
 });
 

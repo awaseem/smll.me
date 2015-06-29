@@ -3,6 +3,6 @@
  */
 Meteor.startup(function() {
     reCAPTCHA.config({
-        privatekey: '6LergAYTAAAAAJ4t3pyp3Aa-bTlkzjKaEgZv-rdQ'
+        privatekey: 'YOUR PRIVATE KEY HERE'
     });
 });
